@@ -8,6 +8,7 @@
   "scripts": {
     "fetch:puzzle": "ts-node scripts/fetchPuzzle.ts",
     "test": "jest --watch",
+    "test:ci": "jest",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
