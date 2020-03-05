@@ -1,8 +1,8 @@
 import { Gene, BitGene, RealGene, IntegerGene } from './gene'
 
 export abstract class Chromosome {
-  private size: number
-  private gene: Gene
+  readonly size: number
+  readonly gene: Gene
 
   constructor({ size, gene }: { size: number; gene: Gene }) {
     this.size = size

@@ -1,8 +1,8 @@
 import { Chromosome } from './chromosome'
 
 export class Genotype {
-  private size: number
-  private chromosome: Chromosome
+  readonly size: number
+  readonly chromosome: Chromosome
 
   constructor({ size, chromosome }: { size: number; chromosome: Chromosome }) {
     this.size = size

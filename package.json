@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "fetch:puzzle": "ts-node scripts/fetchPuzzle.ts",
-    "test": "jest",
+    "test": "jest --watch",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
