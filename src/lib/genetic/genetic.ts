@@ -15,4 +15,17 @@ export class Genetic<T extends Gene> {
     this.genotype = genotype
     this.fitness = fitness
   }
+
+  evolve() {
+    const population = this.initPopulation()
+    const fitness = this.findFitness(population)
+  }
+
+  private initPopulation() {
+    return this.genotype.random()
+  }
+
+  private findFitness(population: number[][]) {
+    return population.map(chromosome => this.fitness(chromosome))
+  }
 }
