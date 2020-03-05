@@ -2,6 +2,7 @@ import {
   BinaryChromosome,
   RealChromosome,
   IntegerChromosome,
+  PermutationChromosome,
 } from './chromosome'
 
 beforeEach(() => {
@@ -10,6 +11,13 @@ beforeEach(() => {
     .mockReturnValueOnce(0.2)
     .mockReturnValueOnce(0.7)
     .mockReturnValueOnce(0.4)
+    .mockReturnValueOnce(0.8)
+    .mockReturnValueOnce(0.1)
+    .mockReturnValueOnce(0.9)
+    .mockReturnValueOnce(0.6)
+    .mockReturnValueOnce(0.0)
+    .mockReturnValueOnce(0.3)
+    .mockReturnValue(0.5)
 })
 
 describe('BinaryChromosome', () => {
@@ -52,6 +60,9 @@ describe('IntegerChromosome', () => {
 
 describe('PermutationChromosome', () => {
   describe('random', () => {
-    it.todo('generates a random permutation of integer genes')
+    it('generates a random permutation of integer genes', () => {
+      const chromosome = new PermutationChromosome({ min: -1, max: 9 }).random()
+      expect(chromosome).toEqual([0, 6, 7, 8, 3, -1, 4, 2, 5, 1])
+    })
   })
 })

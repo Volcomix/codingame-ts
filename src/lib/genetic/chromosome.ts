@@ -1,10 +1,10 @@
 import { Gene, BitGene, RealGene, IntegerGene } from './gene'
 
-export abstract class Chromosome {
+export abstract class Chromosome<T extends Gene> {
   readonly size: number
-  readonly gene: Gene
+  readonly gene: T
 
-  constructor({ size, gene }: { size: number; gene: Gene }) {
+  constructor({ size, gene }: { size: number; gene: T }) {
     this.size = size
     this.gene = gene
   }
@@ -14,26 +14,40 @@ export abstract class Chromosome {
   }
 }
 
-export class BinaryChromosome extends Chromosome {
+export class BinaryChromosome extends Chromosome<BitGene> {
   constructor({ size }: { size: number }) {
     super({ size, gene: new BitGene() })
   }
 }
 
-export class RealChromosome extends Chromosome {
+export class RealChromosome extends Chromosome<RealGene> {
   constructor({ size, min, max }: { size: number; min: number; max: number }) {
     super({ size, gene: new RealGene({ min, max }) })
   }
 }
 
-export class IntegerChromosome extends Chromosome {
+export class IntegerChromosome extends Chromosome<IntegerGene> {
   constructor({ size, min, max }: { size: number; min: number; max: number }) {
     super({ size, gene: new IntegerGene({ min, max }) })
   }
 }
 
-export class PermutationChromosome extends Chromosome {
+export class PermutationChromosome extends Chromosome<IntegerGene> {
   constructor({ min, max }: { min: number; max: number }) {
-    super({ size: max - min + 1, gene: new IntegerGene({ min, max }) })
+    super({ size: max - min, gene: new IntegerGene({ min, max }) })
+  }
+
+  random() {
+    const chromosome = Array.from(
+      { length: this.size },
+      (_, allele) => allele + this.gene.min
+    )
+    for (let i = this.size - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      const allele = chromosome[i]
+      chromosome[i] = chromosome[j]
+      chromosome[j] = allele
+    }
+    return chromosome
   }
 }
