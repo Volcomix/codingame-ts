@@ -15,4 +15,8 @@ export class Genotype<T extends Gene> {
     this.size = size
     this.chromosome = chromosome
   }
+
+  random() {
+    return Array.from({ length: this.size }, () => this.chromosome.random())
+  }
 }
