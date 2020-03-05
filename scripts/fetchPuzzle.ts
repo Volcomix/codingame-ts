@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { promises as fs } from 'fs'
 import axios from 'axios'
 
@@ -33,7 +31,7 @@ async function fetchPuzzle() {
   return response.data
 }
 
-async function fetchReplay(replayId) {
+async function fetchReplay(replayId: number) {
   const response = await axios.post(
     `${codingameUrl}/gameResult/findInformationById`,
     [replayId, null]
@@ -41,7 +39,7 @@ async function fetchReplay(replayId) {
   return response.data
 }
 
-async function writePuzzleFiles(replay) {
+async function writePuzzleFiles(replay: any) {
   await fs.mkdir(puzzleFilesDir, { recursive: true })
   await fs.writeFile(
     `${puzzleFilesDir}/gameResult.json`,

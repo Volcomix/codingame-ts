@@ -1,32 +1,35 @@
-import { BitGene, RealGene, IntegerGene } from './gene'
+import { Gene, BitGene, RealGene, IntegerGene } from './gene'
 
-export class Chromosome {
-  constructor({ size, gene }) {
+export abstract class Chromosome {
+  private size: number
+  private gene: Gene
+
+  constructor({ size, gene }: { size: number; gene: Gene }) {
     this.size = size
     this.gene = gene
   }
 }
 
 export class BinaryChromosome extends Chromosome {
-  constructor({ size }) {
+  constructor({ size }: { size: number }) {
     super({ size, gene: new BitGene() })
   }
 }
 
 export class RealChromosome extends Chromosome {
-  constructor({ size, min, max }) {
+  constructor({ size, min, max }: { size: number; min: number; max: number }) {
     super({ size, gene: new RealGene({ min, max }) })
   }
 }
 
 export class IntegerChromosome extends Chromosome {
-  constructor({ size, min, max }) {
+  constructor({ size, min, max }: { size: number; min: number; max: number }) {
     super({ size, gene: new IntegerGene({ min, max }) })
   }
 }
 
 export class PermutationChromosome extends Chromosome {
-  constructor({ min, max }) {
+  constructor({ min, max }: { min: number; max: number }) {
     super({ size: max - min + 1, gene: new IntegerGene({ min, max }) })
   }
 }
