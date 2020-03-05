@@ -3,7 +3,7 @@ import { IntegerChromosome } from './chromosome'
 import { Genetic } from './genetic'
 
 it('instantiates', () => {
-  new Genetic<number>({
+  new Genetic({
     genotype: new Genotype({
       size: 100,
       chromosome: new IntegerChromosome({
