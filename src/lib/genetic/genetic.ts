@@ -1,14 +1,15 @@
 import { Genotype } from './genotype'
+import { Gene } from './gene'
 
-export class Genetic {
-  readonly genotype: Genotype
+export class Genetic<T extends Gene> {
+  readonly genotype: Genotype<T>
   readonly fitness: (chromosome: number[]) => number
 
   constructor({
     genotype,
     fitness,
   }: {
-    genotype: Genotype
+    genotype: Genotype<T>
     fitness: (chromosome: number[]) => number
   }) {
     this.genotype = genotype
