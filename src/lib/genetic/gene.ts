@@ -1,4 +1,6 @@
-export abstract class Gene {}
+export abstract class Gene {
+  abstract random(): number
+}
 
 export class BitGene extends Gene {
   random() {

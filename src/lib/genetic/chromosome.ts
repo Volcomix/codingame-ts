@@ -8,6 +8,10 @@ export abstract class Chromosome {
     this.size = size
     this.gene = gene
   }
+
+  random() {
+    return Array.from({ length: this.size }, () => this.gene.random())
+  }
 }
 
 export class BinaryChromosome extends Chromosome {
