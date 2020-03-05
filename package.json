@@ -5,11 +5,21 @@
   "author": "Volcomix",
   "license": "MIT",
   "private": true,
-  "type": "module",
   "scripts": {
-    "fetch:puzzle": "scripts/fetchPuzzle.js"
+    "fetch:puzzle": "ts-node scripts/fetchPuzzle.ts",
+    "test": "jest --watch",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "axios": "^0.19.2"
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.3",
+    "@types/node": "^13.7.7",
+    "axios": "^0.19.2",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
   }
 }
