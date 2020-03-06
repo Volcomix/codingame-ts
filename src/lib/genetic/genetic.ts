@@ -1,5 +1,5 @@
-import { Genotype } from './genotype'
-import { Gene } from './gene'
+import { Genotype } from './domain/genotype'
+import { Gene } from './domain/gene'
 
 export class Genetic<T extends Gene> {
   readonly genotype: Genotype<T>

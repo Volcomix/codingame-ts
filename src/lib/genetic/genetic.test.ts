@@ -1,6 +1,6 @@
-import { Genotype } from './genotype'
-import { IntegerChromosome } from './chromosome'
 import { Genetic } from './genetic'
+import { Genotype } from './domain/genotype'
+import { IntegerChromosome } from './domain/chromosome'
 
 describe('Genetic', () => {
   describe('evolve', () => {
