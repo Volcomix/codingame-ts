@@ -17,10 +17,10 @@ export class RouletteWheelSelector implements Selector {
     fitnessSum: number
   ): number[] {
     let partialSum = Math.random() * fitnessSum
-    for (let j = 0; j < fitness.length; j++) {
-      partialSum -= fitness[j]
+    for (let i = 0; i < fitness.length; i++) {
+      partialSum -= fitness[i]
       if (partialSum < 0) {
-        return population[j]
+        return population[i]
       }
     }
   }
