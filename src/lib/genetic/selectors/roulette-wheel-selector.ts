@@ -1,11 +1,10 @@
 import { Selector } from './selector'
+import { sum, max } from '../../utils/array-utils'
+import { random, randomInt } from '../../utils/random-utils'
 
 export class RWLinearWalkSelector implements Selector {
   select(population: number[][], fitness: number[], count: number): number[][] {
-    const fitnessSum = fitness.reduce(
-      (sum, chromosomeFitness) => sum + chromosomeFitness,
-      0
-    )
+    const fitnessSum = sum(fitness)
     return Array.from({ length: count }, () =>
       this.selectOne(population, fitness, fitnessSum)
     )
@@ -16,7 +15,7 @@ export class RWLinearWalkSelector implements Selector {
     fitness: number[],
     fitnessSum: number
   ): number[] {
-    let partialSum = Math.random() * fitnessSum
+    let partialSum = random(fitnessSum)
     for (let i = 0; i < population.length; i++) {
       partialSum -= fitness[i]
       if (partialSum < 0) {
@@ -28,7 +27,7 @@ export class RWLinearWalkSelector implements Selector {
 
 export class RWStochasticAcceptanceSelector implements Selector {
   select(population: number[][], fitness: number[], count: number): number[][] {
-    const maxFitness = Math.max(...fitness)
+    const maxFitness = max(fitness)
     return Array.from({ length: count }, () =>
       this.selectOne(population, fitness, maxFitness)
     )
@@ -40,8 +39,8 @@ export class RWStochasticAcceptanceSelector implements Selector {
     maxFitness: number
   ): number[] {
     while (true) {
-      const i = Math.floor(Math.random() * population.length)
-      if (Math.random() < fitness[i] / maxFitness) {
+      const i = randomInt(population.length)
+      if (random() < fitness[i] / maxFitness) {
         return population[i]
       }
     }

@@ -1,4 +1,5 @@
 import { Gene, BitGene, RealGene, IntegerGene } from './gene'
+import { randomInt } from '../../utils/random-utils'
 
 export abstract class Chromosome<T extends Gene> {
   readonly size: number
@@ -43,7 +44,7 @@ export class PermutationChromosome extends Chromosome<IntegerGene> {
       (_, allele) => allele + this.gene.min
     )
     for (let i = this.size - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
+      const j = randomInt(i + 1)
       const allele = chromosome[i]
       chromosome[i] = chromosome[j]
       chromosome[j] = allele
