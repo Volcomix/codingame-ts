@@ -1,6 +1,6 @@
 import { Selector } from './selector'
 
-export class RouletteWheelSelector implements Selector {
+export class LinearWalkSelector implements Selector {
   select(population: number[][], fitness: number[], count: number): number[][] {
     const fitnessSum = fitness.reduce(
       (sum, chromosomeFitness) => sum + chromosomeFitness,
@@ -20,6 +20,28 @@ export class RouletteWheelSelector implements Selector {
     for (let i = 0; i < population.length; i++) {
       partialSum -= fitness[i]
       if (partialSum < 0) {
+        return population[i]
+      }
+    }
+  }
+}
+
+export class StochasticAcceptanceSelector implements Selector {
+  select(population: number[][], fitness: number[], count: number): number[][] {
+    const maxFitness = Math.max(...fitness)
+    return Array.from({ length: count }, () =>
+      this.selectOne(population, fitness, maxFitness)
+    )
+  }
+
+  private selectOne(
+    population: number[][],
+    fitness: number[],
+    maxFitness: number
+  ): number[] {
+    while (true) {
+      const i = Math.floor(Math.random() * population.length)
+      if (Math.random() < fitness[i] / maxFitness) {
         return population[i]
       }
     }
