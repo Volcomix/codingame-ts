@@ -1,19 +1,18 @@
-export abstract class Gene {
-  abstract random(): number
+export interface Gene {
+  random(): number
 }
 
-export class BitGene extends Gene {
+export class BitGene implements Gene {
   random() {
     return Math.random() < 0.5 ? 0 : 1
   }
 }
 
-export abstract class NumberGene extends Gene {
+export abstract class NumberGene implements Gene {
   readonly min: number
   readonly max: number
 
   constructor({ min, max }: { min: number; max: number }) {
-    super()
     this.min = min
     this.max = max
   }

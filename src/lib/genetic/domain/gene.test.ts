@@ -2,7 +2,11 @@ import { BitGene, RealGene, IntegerGene } from './gene'
 
 describe('BitGene', () => {
   describe('random', () => {
-    const gene = new BitGene()
+    let gene: BitGene
+
+    beforeEach(() => {
+      gene = new BitGene()
+    })
 
     it('returns 0', () => {
       Math.random = jest.fn(() => 0.3)
@@ -18,7 +22,11 @@ describe('BitGene', () => {
 
 describe('RealGene', () => {
   describe('random', () => {
-    const gene = new RealGene({ min: -1, max: 2 })
+    let gene: RealGene
+
+    beforeEach(() => {
+      gene = new RealGene({ min: -1, max: 2 })
+    })
 
     it('returns a real equal to min', () => {
       Math.random = jest.fn(() => 0)
@@ -39,7 +47,11 @@ describe('RealGene', () => {
 
 describe('IntegerGene', () => {
   describe('random', () => {
-    const gene = new IntegerGene({ min: -1, max: 9 })
+    let gene: IntegerGene
+
+    beforeEach(() => {
+      gene = new IntegerGene({ min: -1, max: 9 })
+    })
 
     it('returns an integer equal to min', () => {
       Math.random = jest.fn(() => 0)

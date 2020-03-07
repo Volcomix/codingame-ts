@@ -20,7 +20,7 @@ class TestChromosome extends Chromosome<TestGene> {
   }
 }
 
-class TestGene extends Gene {
+class TestGene implements Gene {
   private inc = 0
 
   random() {
