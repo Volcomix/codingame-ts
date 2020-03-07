@@ -1,6 +1,6 @@
 import { Selector } from './selector'
 
-export class LinearWalkSelector implements Selector {
+export class RWLinearWalkSelector implements Selector {
   select(population: number[][], fitness: number[], count: number): number[][] {
     const fitnessSum = fitness.reduce(
       (sum, chromosomeFitness) => sum + chromosomeFitness,
@@ -26,7 +26,7 @@ export class LinearWalkSelector implements Selector {
   }
 }
 
-export class StochasticAcceptanceSelector implements Selector {
+export class RWStochasticAcceptanceSelector implements Selector {
   select(population: number[][], fitness: number[], count: number): number[][] {
     const maxFitness = Math.max(...fitness)
     return Array.from({ length: count }, () =>

@@ -1,9 +1,9 @@
 import {
-  LinearWalkSelector,
-  StochasticAcceptanceSelector,
+  RWLinearWalkSelector,
+  RWStochasticAcceptanceSelector,
 } from './roulette-wheel-selector'
 
-describe('LinearWalkSelector', () => {
+describe('RWLinearWalkSelector', () => {
   describe('select', () => {
     it('selects chromosomes from population', () => {
       Math.random = jest
@@ -14,7 +14,7 @@ describe('LinearWalkSelector', () => {
         .mockReturnValueOnce(0.7)
         .mockReturnValue(0.99999999)
 
-      const selector = new LinearWalkSelector()
+      const selector = new RWLinearWalkSelector()
       const population = Array.from({ length: 5 }, (_, i) => [i])
       const fitness = Array.from({ length: 5 }, (_, i) => i / 5)
       const selectedChromosomes = selector.select(population, fitness, 5)
@@ -23,7 +23,7 @@ describe('LinearWalkSelector', () => {
   })
 })
 
-describe('StochasticAcceptanceSelector', () => {
+describe('RWStochasticAcceptanceSelector', () => {
   describe('select', () => {
     it('selects chromosomes from population', () => {
       Math.random = jest
@@ -35,7 +35,7 @@ describe('StochasticAcceptanceSelector', () => {
         .mockReturnValueOnce(0.4)
         .mockReturnValueOnce(0.49999999)
 
-      const selector = new StochasticAcceptanceSelector()
+      const selector = new RWStochasticAcceptanceSelector()
       const population = Array.from({ length: 5 }, (_, i) => [i])
       const fitness = Array.from({ length: 5 }, (_, i) => i / 5)
       const selectedChromosomes = selector.select(population, fitness, 2)
