@@ -14,7 +14,7 @@ describe('Genetic', () => {
             max: 90,
           }),
         }),
-        fitness: chromosome => {
+        fitnessFunction: chromosome => {
           return chromosome.reduce((sum, allele) => sum + allele, 0)
         },
       })

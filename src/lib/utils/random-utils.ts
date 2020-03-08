@@ -2,9 +2,9 @@ export function random(): number
 export function random(max: number): number
 export function random(min: number, max: number): number
 export function random(min?: number, max?: number): number {
-  if (min == null && max == null) {
+  if (min === undefined && max === undefined) {
     return Math.random()
-  } else if (max == null) {
+  } else if (max === undefined) {
     return Math.random() * min // the min argument holds the max
   } else {
     return Math.random() * (max - min) + min
@@ -14,7 +14,7 @@ export function random(min?: number, max?: number): number {
 export function randomInt(max: number): number
 export function randomInt(min: number, max: number): number
 export function randomInt(min?: number, max?: number): number {
-  if (max == null) {
+  if (max === undefined) {
     return Math.floor(random(min)) // the min argument holds the max
   } else {
     return Math.floor(random(min, max))

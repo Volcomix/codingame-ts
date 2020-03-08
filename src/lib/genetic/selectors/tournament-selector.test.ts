@@ -18,6 +18,7 @@ describe('TournamentSelector', () => {
       const selector = new TournamentSelector(2)
       const selectedChromosomes = selector.select(population, fitness, 3)
       expect(selectedChromosomes).toEqual([[1], [2], [4]])
+      expect(Math.random).toHaveBeenCalledTimes(6)
     })
   })
 })

@@ -3,17 +3,17 @@ import { Gene } from './domain/gene'
 
 export class Genetic<T extends Gene> {
   readonly genotype: Genotype<T>
-  readonly fitness: (chromosome: number[]) => number
+  readonly fitnessFunction: (chromosome: number[]) => number
 
   constructor({
     genotype,
-    fitness,
+    fitnessFunction,
   }: {
     genotype: Genotype<T>
-    fitness: (chromosome: number[]) => number
+    fitnessFunction: (chromosome: number[]) => number
   }) {
     this.genotype = genotype
-    this.fitness = fitness
+    this.fitnessFunction = fitnessFunction
   }
 
   evolve() {
@@ -26,6 +26,6 @@ export class Genetic<T extends Gene> {
   }
 
   private findFitness(population: number[][]) {
-    return population.map(chromosome => this.fitness(chromosome))
+    return population.map(chromosome => this.fitnessFunction(chromosome))
   }
 }

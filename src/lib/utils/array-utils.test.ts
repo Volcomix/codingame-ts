@@ -1,8 +1,14 @@
-import { sum, max } from './array-utils'
+import { sum, min, max } from './array-utils'
 
 describe('sum', () => {
   it('sums the numbers', () => {
     expect(sum([1, 2])).toBe(3)
+  })
+})
+
+describe('min', () => {
+  it('returns the min number', () => {
+    expect(min([3, 1, 2])).toBe(1)
   })
 })
 
