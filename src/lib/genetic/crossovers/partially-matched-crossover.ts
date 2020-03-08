@@ -22,18 +22,18 @@ export class PartiallyMatchedCrossover extends Crossover {
     end: number
   ) {
     for (let i = 0; i < begin; i++) {
-      let allele = swappedWith.get(chromosome[i])
-      while (allele !== undefined) {
-        chromosome[i] = allele
+      let allele = chromosome[i]
+      while (swappedWith.has(allele)) {
         allele = swappedWith.get(allele)
       }
+      chromosome[i] = allele
     }
     for (let i = end; i < chromosome.length; i++) {
-      let allele = swappedWith.get(chromosome[i])
-      while (allele !== undefined) {
-        chromosome[i] = allele
+      let allele = chromosome[i]
+      while (swappedWith.has(allele)) {
         allele = swappedWith.get(allele)
       }
+      chromosome[i] = allele
     }
   }
 }
