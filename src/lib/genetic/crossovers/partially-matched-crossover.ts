@@ -3,15 +3,7 @@ import { randomInt } from '../../utils/random-utils'
 
 export class PartiallyMatchedCrossover extends Crossover {
   crossover(a: number[], b: number[]): void {
-    let begin = randomInt(a.length)
-    let end = randomInt(a.length)
-    if (begin > end) {
-      const temp = begin
-      begin = end
-      end = temp
-    } else if (begin === end) {
-      end = a.length
-    }
+    const { begin, end } = this.randomRegion(a.length)
     const aSwappedWith = new Map<number, number>()
     const bSwappedWith = new Map<number, number>()
     for (let i = begin; i < end; i++) {
