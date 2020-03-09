@@ -22,18 +22,22 @@ export class PartiallyMatchedCrossover extends Crossover {
     end: number
   ) {
     for (let i = 0; i < begin; i++) {
-      let allele = chromosome[i]
-      while (swappedWith.has(allele)) {
-        allele = swappedWith.get(allele)
-      }
-      chromosome[i] = allele
+      this.repairGene(chromosome, i, swappedWith)
     }
     for (let i = end; i < chromosome.length; i++) {
-      let allele = chromosome[i]
-      while (swappedWith.has(allele)) {
-        allele = swappedWith.get(allele)
-      }
-      chromosome[i] = allele
+      this.repairGene(chromosome, i, swappedWith)
     }
+  }
+
+  private repairGene(
+    chromosome: number[],
+    index: number,
+    swappedWith: Map<number, number>
+  ) {
+    let allele = chromosome[index]
+    while (swappedWith.has(allele)) {
+      allele = swappedWith.get(allele)
+    }
+    chromosome[index] = allele
   }
 }
