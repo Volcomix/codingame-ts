@@ -14,11 +14,7 @@ export function random(min?: number, max?: number): number {
 export function randomInt(max: number): number
 export function randomInt(min: number, max: number): number
 export function randomInt(min?: number, max?: number): number {
-  if (max === undefined) {
-    return Math.floor(random(min)) // the min argument holds the max
-  } else {
-    return Math.floor(random(min, max))
-  }
+  return Math.floor(random(min, max))
 }
 
 export function randomBit(): number {
