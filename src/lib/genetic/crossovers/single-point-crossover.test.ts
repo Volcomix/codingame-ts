@@ -18,6 +18,7 @@ describe('SinglePointCrossover', () => {
       singlePointCrossover.crossover(a, b)
       expect(a).toEqual([0, 1, 2, 1, 0])
       expect(b).toEqual([4, 3, 2, 3, 4])
+      expect(Math.random).toHaveBeenCalledTimes(1)
     })
 
     it('swaps all genes', () => {
@@ -26,6 +27,7 @@ describe('SinglePointCrossover', () => {
       singlePointCrossover.crossover(a, b)
       expect(a).toEqual([4, 3, 2, 1, 0])
       expect(b).toEqual([0, 1, 2, 3, 4])
+      expect(Math.random).toHaveBeenCalledTimes(1)
     })
 
     it('swaps the last gene', () => {
@@ -34,6 +36,7 @@ describe('SinglePointCrossover', () => {
       singlePointCrossover.crossover(a, b)
       expect(a).toEqual([0, 1, 2, 3, 0])
       expect(b).toEqual([4, 3, 2, 1, 4])
+      expect(Math.random).toHaveBeenCalledTimes(1)
     })
   })
 })

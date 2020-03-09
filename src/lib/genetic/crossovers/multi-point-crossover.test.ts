@@ -21,6 +21,7 @@ describe('MultiPointCrossover', () => {
       multiPointCrossover.crossover(a, b)
       expect(a).toEqual([0, 3, 2, 1, 4])
       expect(b).toEqual([4, 1, 2, 3, 0])
+      expect(Math.random).toHaveBeenCalledTimes(2)
     })
 
     it('swaps the first gene', () => {
@@ -32,6 +33,7 @@ describe('MultiPointCrossover', () => {
       multiPointCrossover.crossover(a, b)
       expect(a).toEqual([4, 1, 2, 3, 4])
       expect(b).toEqual([0, 3, 2, 1, 0])
+      expect(Math.random).toHaveBeenCalledTimes(2)
     })
 
     it('swaps genes with overlapping crossover points', () => {
@@ -40,6 +42,7 @@ describe('MultiPointCrossover', () => {
       multiPointCrossover.crossover(a, b)
       expect(a).toEqual([0, 3, 2, 1, 0])
       expect(b).toEqual([4, 1, 2, 3, 4])
+      expect(Math.random).toHaveBeenCalledTimes(2)
     })
   })
 })

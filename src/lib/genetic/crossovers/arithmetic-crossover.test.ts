@@ -10,6 +10,8 @@ describe('ArithmeticCrossover', () => {
       arithmeticCrossover = new ArithmeticCrossover(1, 0.3)
       a = [0, 1]
       b = [4, 3]
+
+      Math.random = jest.fn(() => 0)
     })
 
     it('alters both chromosomes', () => {
@@ -20,6 +22,7 @@ describe('ArithmeticCrossover', () => {
       expect(b).toHaveLength(2)
       expect(b[0]).toBeCloseTo(2.8)
       expect(b[1]).toBeCloseTo(2.4)
+      expect(Math.random).not.toHaveBeenCalled()
     })
   })
 })
