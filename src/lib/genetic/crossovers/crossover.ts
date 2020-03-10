@@ -1,8 +1,7 @@
+import { Alterer } from '../domain/alterer'
 import { randomInt } from '../../utils/random-utils'
 
-export abstract class Crossover {
-  constructor(readonly probability: number) {}
-
+export abstract class Crossover extends Alterer {
   abstract crossover(a: number[], b: number[]): void
 
   protected swap(a: number[], b: number[], index: number) {
