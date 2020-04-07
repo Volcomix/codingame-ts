@@ -9,5 +9,6 @@ export default {
   plugins: [typescript()],
   watch: {
     include: 'src/**',
+    exclude: 'src/**/*.test.ts',
   },
 }

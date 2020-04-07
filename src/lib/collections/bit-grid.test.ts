@@ -4,7 +4,7 @@ describe('BitGrid', () => {
   let bitGrid: BitGrid
 
   beforeEach(() => {
-    bitGrid = new BitGrid(2, 2)
+    bitGrid = new BitGrid(15, 15)
   })
 
   describe('constructor', () => {
@@ -21,24 +21,22 @@ describe('BitGrid', () => {
     })
   })
 
-  describe('revertReset', () => {
-    it('reverts cells when nothing else was done after reset', () => {
-      bitGrid.set(1, 1, true)
-      bitGrid.reset()
-      bitGrid.revertReset()
-      expect(bitGrid.get(1, 1)).toBe(true)
-    })
-  })
-
   describe('get', () => {
     it('returns true', () => {
-      bitGrid.set(1, 1, true)
-      expect(bitGrid.get(1, 1)).toBe(true)
+      bitGrid.set(11, 12, true)
+      expect(bitGrid.get(11, 12)).toBe(true)
     })
 
     it('returns false', () => {
       bitGrid.set(1, 1, false)
       expect(bitGrid.get(1, 1)).toBe(false)
     })
+  })
+
+  it('matches snapshot', () => {
+    bitGrid.set(0, 0, true)
+    bitGrid.set(1, 1, true)
+    bitGrid.set(14, 14, true)
+    expect(bitGrid).toMatchSnapshot()
   })
 })

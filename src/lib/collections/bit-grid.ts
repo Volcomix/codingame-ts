@@ -1,27 +1,39 @@
 export class BitGrid {
-  private cells: number[][]
-  private mark = Number.MIN_SAFE_INTEGER
+  private buffer: Buffer
+  private offset: number
+  private lastBitPosition: BitPosition = { byteIndex: 0, bitIndexInByte: 0 }
 
   constructor(readonly width: number, readonly height: number) {
-    this.cells = Array.from({ length: width }, () =>
-      Array.from({ length: height }, () => this.mark)
-    )
-    this.reset()
+    this.offset = Math.ceil(Math.log2(width))
+    this.buffer = Buffer.alloc(((height << this.offset) >> 3) + 1)
   }
 
   reset() {
-    this.mark++
+    this.buffer.fill(0)
   }
 
-  revertReset() {
-    this.mark--
-  }
-
-  get(x: number, y: number) {
-    return this.cells[x][y] >= this.mark
+  get(x: number, y: number): boolean {
+    const { byteIndex, bitIndexInByte } = this.getBitPosition(x, y)
+    return ((this.buffer[byteIndex] >> bitIndexInByte) & 1) === 1
   }
 
   set(x: number, y: number, value: boolean) {
-    this.cells[x][y] = value ? this.mark : this.mark - 1
+    const { byteIndex, bitIndexInByte } = this.getBitPosition(x, y)
+    this.buffer[byteIndex] = value
+      ? this.buffer[byteIndex] | (1 << bitIndexInByte)
+      : this.buffer[byteIndex] & ~(1 << bitIndexInByte)
   }
+
+  private getBitPosition(x: number, y: number): BitPosition {
+    const bitIndex = (y << this.offset) + x
+    const byteIndex = bitIndex >> 3
+    this.lastBitPosition.byteIndex = byteIndex
+    this.lastBitPosition.bitIndexInByte = bitIndex - (byteIndex << 3)
+    return this.lastBitPosition
+  }
+}
+
+interface BitPosition {
+  byteIndex: number
+  bitIndexInByte: number
 }

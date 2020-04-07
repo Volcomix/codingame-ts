@@ -1,7 +1,7 @@
 const readlinebackup = readline
 
-global.readline = function() {
+global.readline = function () {
   const line = readlinebackup()
-  console.error(line)
+  console.error('[in]', line)
   return line
 }

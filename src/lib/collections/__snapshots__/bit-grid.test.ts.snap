@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BitGrid matches snapshot 1`] = `
+BitGrid {
+  "buffer": Object {
+    "data": Array [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      64,
+      0,
+    ],
+    "type": "Buffer",
+  },
+  "height": 15,
+  "lastBitPosition": Object {
+    "bitIndexInByte": 6,
+    "byteIndex": 29,
+  },
+  "offset": 4,
+  "width": 15,
+}
+`;
