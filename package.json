@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "0x": "^4.9.1",
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@rollup/plugin-typescript": "^4.1.1",
