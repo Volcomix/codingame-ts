@@ -1,14 +1,14 @@
 export class BitGrid {
-  private buffer: Buffer
+  private buffer: Uint8Array
   private offset: number
   private lastBitPosition: BitPosition = { byteIndex: 0, bitIndexInByte: 0 }
 
   constructor(readonly width: number, readonly height: number) {
     this.offset = Math.ceil(Math.log2(width))
-    this.buffer = Buffer.alloc(((height << this.offset) >> 3) + 1)
+    this.buffer = new Uint8Array(((height << this.offset) >> 3) + 1)
   }
 
-  reset() {
+  clear() {
     this.buffer.fill(0)
   }
 
@@ -22,6 +22,22 @@ export class BitGrid {
     this.buffer[byteIndex] = value
       ? this.buffer[byteIndex] | (1 << bitIndexInByte)
       : this.buffer[byteIndex] & ~(1 << bitIndexInByte)
+  }
+
+  copyTo(target: BitGrid) {
+    target.buffer.set(this.buffer)
+  }
+
+  and(other: BitGrid) {
+    other.buffer.forEach((byte, i) => {
+      this.buffer[i] &= byte
+    })
+  }
+
+  or(other: BitGrid) {
+    other.buffer.forEach((byte, i) => {
+      this.buffer[i] |= byte
+    })
   }
 
   private getBitPosition(x: number, y: number): BitPosition {

@@ -11,6 +11,11 @@ export class Queue<T> {
     return this.lastIndex - this.firstIndex
   }
 
+  clear() {
+    this.firstIndex = 0
+    this.lastIndex = 0
+  }
+
   enqueue(element: T) {
     this.array[this.lastIndex++] = element
   }

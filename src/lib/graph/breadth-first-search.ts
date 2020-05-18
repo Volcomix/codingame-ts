@@ -6,9 +6,8 @@ export function bfs<T>(
   visit: (node: T) => void,
   mark: (node: T) => void,
   isMarked: (node: T) => boolean,
-  nodeCount: number
+  queue: Queue<T>
 ) {
-  const queue = new Queue<T>(nodeCount)
   mark(root)
   queue.enqueue(root)
 

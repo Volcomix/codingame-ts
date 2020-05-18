@@ -34,4 +34,12 @@ describe('Queue', () => {
       expect(queue).toHaveLength(0)
     })
   })
+
+  describe('clear', () => {
+    it('removes all elements', () => {
+      queue.enqueue(2)
+      queue.clear()
+      expect(queue).toHaveLength(0)
+    })
+  })
 })
