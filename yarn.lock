@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"0x@^4.10.0":
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/0x/-/0x-4.10.0.tgz#100a5a2787075e79579edba87c226b3ba9f6bdda"
-  integrity sha512-UVMfGv3bqOeWQ1+hDqUcXpV7rt6PtOYB1UF1PsbzO/IKGu3FrG9kDXfOYGsudFMZ5F3o0y0MyJDEUTOjY3X3wg==
+"0x@^4.10.2":
+  version "4.10.2"
+  resolved "https://registry.yarnpkg.com/0x/-/0x-4.10.2.tgz#1fec6daa62906988830583fd86663e96430187f6"
+  integrity sha512-LXTa7LgSDOns5VsdyMSNTkrXqMZ1cLuPqehojM96WFO9+L2XjmKKTayKi++38CevR1QrjF4EqGDN98oxNhf5uQ==
   dependencies:
     ajv "^6.9.2"
     browserify "^16.2.3"
