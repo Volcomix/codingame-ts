@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs'
 import axios from 'axios'
+import { promises as fs } from 'fs'
 
 const puzzleName = 'tic-tac-toe'
 
@@ -24,7 +24,7 @@ async function main() {
 }
 
 async function fetchPuzzle() {
-  const response = await axios.post(
+  const response = await axios.post<{ replayIds: number[] }>(
     `${codingameUrl}/Puzzle/findProgressByPrettyId`,
     [puzzleName, null]
   )
