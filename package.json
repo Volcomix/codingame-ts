@@ -22,7 +22,7 @@
     "@babel/preset-typescript": "^7.16.0",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.13",
     "axios": "^0.24.0",
     "babel-jest": "^27.4.2",
     "jest": "^27.4.3",
