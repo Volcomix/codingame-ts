@@ -24,7 +24,7 @@
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
     "axios": "^0.24.0",
-    "babel-jest": "^27.4.2",
+    "babel-jest": "^27.4.6",
     "jest": "^27.4.3",
     "rollup": "^2.60.2",
     "ts-node": "^10.4.0",
