@@ -16,7 +16,7 @@
     "fetch:puzzle": "ts-node scripts/fetchPuzzle.ts"
   },
   "devDependencies": {
-    "0x": "^4.11.0",
+    "0x": "^5.1.2",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
